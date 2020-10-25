@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from 'react'
+import Wrapper from './components/Wrapper'
+import {makeStyles} from '@material-ui/core/styles'
+import Navigation from './components/Navigation'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+const useStyle = makeStyles((theme) =>({
+
+}))
+
+export default function App(){
+  const classes = useStyle()
+  const [backgroundImage, setBackgroundImage] = useState('#834bff')
+  return(
+    <div className={classes.root}
+      style={{
+        backgroundColor : backgroundImage,
+        backgroundImage:`url(${backgroundImage})`,
+        backgroundRepeat : 'no-repeat',
+        backgroundSize : 'cover',
+      }}>
+      <Navigation setBackgroundImage= {setBackgroundImage}/>
+      <Wrapper/>
     </div>
-  );
+  )
 }
-
-export default App;
